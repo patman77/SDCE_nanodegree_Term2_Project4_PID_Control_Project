@@ -1,5 +1,6 @@
 #include "PID.h"
 #include <math.h>
+#include <iostream>
 /**
  * TODO: Complete the PID class. You may add any additional desired functions.
  */
@@ -15,6 +16,9 @@ void PID::Init(double Kp_, double Ki_, double Kd_, bool firstcall_) {
   Kp = Kp_;
   Ki = Ki_;
   Kd = Kd_;
+  std::cout<<"set Kp = "<<Kp<<std::endl;
+  std::cout<<"set Ki = "<<Ki<<std::endl;
+  std::cout<<"set Kd = "<<Kd<<std::endl;
 
   // init PID errors
   p_error = i_error = d_error = 0.0;
