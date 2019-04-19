@@ -45,7 +45,7 @@ int main() {
   //pid.Init(0.001, 0.0002, 5.0, true);
   //pid.Init(0.0933784, 0.0, 1.64645, true); // found out with twiddle
   //pid.Init(0.0001, 0.0, 0.0, true); // only p param
-  pid.Init(0.14, 0.0001, 0.85, true); // cross check: this should drive straight
+  pid.Init(0.14, 0.0001, 0.95, true); // cross check: this should drive straight
 
   h.onMessage([&pid, &curr_time, &prev_time, &t](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
                      uWS::OpCode opCode) {
@@ -94,7 +94,7 @@ int main() {
           steer_value = pid.getSteerAngle();
           //std::cout<<"steering angle before deg2rad: "<<steer_value<<std::endl;
           //steer_value = deg2rad(steer_value);
-          std::cout<<"steering angle before correction: "<<steer_value<<std::endl;
+          //std::cout<<"steering angle before correction: "<<steer_value<<std::endl;
           // correct steering angle to interval [-1,1]
           if(steer_value > 1.0)
           {
