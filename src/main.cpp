@@ -45,7 +45,7 @@ int main() {
   //pid.Init(0.001, 0.0002, 5.0, true);
   //pid.Init(0.0933784, 0.0, 1.64645, true); // found out with twiddle
   //pid.Init(0.0001, 0.0, 0.0, true); // only p param
-  pid.Init(0.18, 0.0, 0.35, true); // cross check: this should drive straight
+  pid.Init(0.14, 0.0001, 0.85, true); // cross check: this should drive straight
 
   h.onMessage([&pid, &curr_time, &prev_time, &t](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
                      uWS::OpCode opCode) {
@@ -110,7 +110,7 @@ int main() {
 #ifdef SIMPLE_THROTTLE_LOGIC
           throttle = (1.0 - 0.5 * fabs(steer_value));
           //if(speed > 20.0) throttle = -speed/10.0;
-          if(speed > 20.0) throttle = 0.0;
+          if(speed > 30.0) throttle = 0.0;
           else throttle = 0.3;
 #else
           if(fabs(cte)>0.5)
